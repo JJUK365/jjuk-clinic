@@ -56,3 +56,12 @@
 /* Keep the emblem itself still; only the surrounding brand scene moves. */
 .brand-sign{animation:none}
 .brand-glyph,.brand-emblem,.slogan-jjuk,.slogan-dot{animation:none;filter:none;transition:none}
+
+/* A live clinical scene beside the opening message, with no title-card delay. */
+.cinema.has-video .brand-scene{display:none}
+.cinema.has-video .cinema-video{left:42%;width:58%;object-fit:cover;object-position:50% 60%}
+.cinema.has-video:after{background:linear-gradient(90deg,var(--navy-d) 0%,var(--navy-d) 36%,color-mix(in srgb,var(--navy-d) 90%,transparent) 43%,color-mix(in srgb,var(--navy-d) 30%,transparent) 61%,transparent 83%)}
+.cinema-video::-webkit-media-controls,.cinema-video::-webkit-media-controls-start-playback-button{display:none!important}
+.cinema.has-video .cinema-content>.film-eyebrow,.cinema.has-video h1,.cinema.has-video .cinema-intro,.cinema.has-video .cinema-actions{animation:none}
+@media(max-width:900px){.cinema.has-video .cinema-video{left:34%;width:66%}}
+@media(max-width:600px){.cinema.has-video .cinema-video{left:0;width:100%;height:64%;object-position:50% 48%}.cinema.has-video:after{background:linear-gradient(0deg,var(--navy-d) 0%,var(--navy-d) 30%,color-mix(in srgb,var(--navy-d) 82%,transparent) 46%,color-mix(in srgb,var(--navy-d) 18%,transparent) 69%,transparent 90%)}.cinema.has-video .cinema-content{padding-top:265px}.cinema.has-video h1{font-size:31px}.cinema.has-video h1 .slogan-jjuk{font-size:68px}.cinema.has-video .film-eyebrow{margin-bottom:12px}.cinema.has-video .cinema-intro{font-size:12px;margin-bottom:16px}}

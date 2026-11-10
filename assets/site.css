@@ -95,13 +95,16 @@ body{background:var(--frame)}.shell{max-width:none;margin:0;border:0;border-radi
 .film-motion-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
 
 /* Compact credentials: keep readable type while removing space between rows. */
-.primary-credentials li{padding:4px 0;line-height:1.45}
+.primary-credentials{border:0}
+.primary-credentials li{display:block;position:relative;padding:0 0 0 13px;margin:0;border:0;line-height:1.6;font-size:14px}
+.primary-credentials li:before{content:'–';position:absolute;left:0;color:var(--grey)}
+.credential-detail{color:var(--grey);font-size:13px}
 .credentials-heading{margin:20px 0 8px}
 .cv-group summary{padding:14px 6px;gap:14px}
 .cv-group summary strong{font-size:20px}
 .cv-group summary small{margin-top:2px;line-height:1.4}
 .cv-group-body{padding:0 6px 14px}
 .cv-list{gap:0 30px;align-items:start}
-.cv-list li{padding:3px 0 3px 12px;font-size:14px;line-height:1.5}
-.cv-list li:before{top:12px}
-@media(max-width:600px){.primary-credentials li{padding:4px 0;line-height:1.45}.cv-group summary{padding:12px 0}.cv-group summary strong{font-size:18px}.cv-group summary small{font-size:11px;line-height:1.4}.cv-group-body{padding:0 0 12px}.cv-list{gap:0}.cv-list li{font-size:13px;line-height:1.45;padding-block:3px}.cv-list li:before{top:11px}.doctor-film figcaption{font-size:11px}}
+.cv-list li{padding:0 0 0 12px;font-size:14px;line-height:1.6;border:0}
+.cv-list li:before{top:10px}
+@media(max-width:600px){.primary-credentials li{padding:0 0 0 13px;line-height:1.6;font-size:13px}.credential-detail{font-size:12px}.cv-group summary{padding:12px 0}.cv-group summary strong{font-size:18px}.cv-group summary small{font-size:11px;line-height:1.4}.cv-group-body{padding:0 0 12px}.cv-list{gap:0}.cv-list li{font-size:13px;line-height:1.6;padding-block:0}.cv-list li:before{top:9px}.doctor-film figcaption{font-size:11px}}
