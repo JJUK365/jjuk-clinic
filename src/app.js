@@ -89,7 +89,7 @@ const names={doctor:'의료진',fees:'비급여 진료비용',visit:'오시는 �
 const departmentKeys=Object.keys(departments);
 const navItems=[['doctor','의료진'],...Object.entries(departments).map(([id,d])=>[id,d.name])];
 const menus=navItems.map(([id,n])=>`<a href="#${id}" data-nav="${id}">${n}</a>`).join('');
-const brandGlyph=()=>'<span class="brand-glyph" aria-hidden="true"></span>';
+const brandGlyph=()=>`<svg class="brand-glyph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false" style="background:none;mask:none;-webkit-mask:none;filter:none"><path d="M82 16H176C194 16 207 18 202 34C198 48 185 66 168 83L205 117L242 74H218C203 74 201 67 207 56L225 28C231 18 238 16 250 16H338C354 16 364 21 361 35C358 49 345 67 326 83L367 128C383 146 374 163 356 165C345 166 335 162 326 155L285 125L247 158C241 163 233 165 223 165H189C178 165 169 161 162 155L128 125L95 155C85 164 76 166 61 165C41 164 28 157 33 138C36 126 51 111 64 99L85 74H52C36 74 32 68 39 54L57 27C63 19 70 16 82 16Z"/><path d="M42 180H358C379 180 390 192 390 210C390 228 377 238 358 238H237V255H319C343 255 355 269 355 292V335C355 361 338 379 314 379C295 379 281 368 281 351V322C281 316 277 312 270 312H75C52 312 43 301 43 284C43 266 55 255 75 255H164V238H42C21 238 10 227 10 210C10 192 23 180 42 180Z"/></svg>`;
 const brandWordmark=()=>'<span class="wordmark-shape" aria-hidden="true"></span>';
 const wordmark=()=>`<a class="logo logo-final" href="#home" aria-label="쭉한의원 홈">${brandWordmark()}<span class="brand-caption" lang="en">JJUK CLINIC</span></a>`;
 const button=(label,url,secondary=false,sign='arrow')=>`<a class="${secondary?'btn2':'btn'}" href="#${url}">${label}${icon(sign,16)}</a>`;
