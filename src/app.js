@@ -108,19 +108,20 @@ const primaryCredentials=[
 '보건복지부 인증 한방재활의학과 전문의',
 '강남자생한방병원 진료원장(TA센터)',
 '장성공립노인전문요양병원 한방과장',
-'경희대학교 한의과대학원 본초학교실 박사과정',
-'경희대학교 한의과대학원 석사',
+'경희대학교 한의학 석사 · 본초학 박사과정',
 '미국 근골격계초음파 (RMSK) 인증',
 'NASM-CES',
-'NSCA 상급 스포츠영양학 코치'
+'NSCA 상급 스포츠영양학 코치',
+'한의 일차의료 가이드라인 교과서 집필진<br><span class="credential-detail">불면증 · 암 관련 증상</span>'
 ];
-const credentials='<ol class="primary-credentials">'+primaryCredentials.map((item,i)=>`<li><span class="credential-index">${String(i+1).padStart(2,'0')}</span>${item}</li>`).join('')+'</ol>';
+const credentials='<ul class="primary-credentials">'+primaryCredentials.map(item=>`<li>${item}</li>`).join('')+'</ul>';
+const homeVideo=clinic.video||media.hero;
 const cvList=items=>'<ul class="cv-list">'+items.map(item=>'<li>'+item+'</li>').join('')+'</ul>';
 const cvGroup=(title,description,body,open=false)=>`<details class="cv-group" ${open?'open':''}><summary><span><strong>${title}</strong><small>${description}</small></span>${icon('plus',20)}</summary><div class="cv-group-body">${body}</div></details>`;
 function mediaField(){if(!clinic.clinicPhoto)return '';return `<section class="pad field"><div><div class="kicker fieldword">Our space</div><h2>편안하게 머무는 공간</h2><p>쭉한의원의 진료 공간을 만나보세요.</p></div><figure><img loading="lazy" src="${escapeHTML(clinic.clinicPhoto)}" alt="쭉한의원 진료 공간"></figure></section>`;}
-function home(){return `<section class="cinema ${clinic.video?'has-video':''}" aria-label="쭉한의원 소개">
-<div class="cinema-visual"><div class="brand-scene" aria-hidden="true"><div class="brand-orbit orbit-one"></div><div class="brand-orbit orbit-two"></div><div class="brand-sign"><span class="brand-emblem">${brandGlyph()}</span><span class="brand-scene-wordmark">${brandWordmark()}</span><span class="brand-scene-caption">CARE THAT STAYS WITH YOU</span></div></div>${clinic.video?`<video class="cinema-video" muted loop playsinline preload="metadata" poster="${media.main}" aria-label="쭉한의원 소개 영상"><source src="${escapeHTML(clinic.video)}"></video>`:''}</div>
-<div class="cinema-content"><div class="film-eyebrow" lang="en">JJUK · CARE FOR YOUR EVERYDAY</div><h1>다시, 편안하게.<br>아픔 없이<br><em class="slogan-jjuk"><span class="visually-hidden">쭉.</span>${brandGlyph()}<span class="slogan-dot" aria-hidden="true"></span></em></h1><p class="cinema-intro">아픈 곳도, 걱정되는 마음도 편하게 이야기하세요.<br>당신의 일상을 함께 생각하는 쭉한의원입니다.</p><div class="cinema-actions">${button('나에게 맞는 진료','pain')}<button class="film-open" type="button" data-film-open>${icon(clinic.video?'play':'plus',14)}${clinic.video?'영상 크게 보기':'쭉한의원 만나보기'}</button></div></div>
+function home(){return `<section class="cinema ${homeVideo?'has-video':''}" aria-label="쭉한의원 소개">
+<div class="cinema-visual"><div class="brand-scene" aria-hidden="true"><div class="brand-orbit orbit-one"></div><div class="brand-orbit orbit-two"></div><div class="brand-sign"><span class="brand-emblem">${brandGlyph()}</span><span class="brand-scene-wordmark">${brandWordmark()}</span><span class="brand-scene-caption">CARE THAT STAYS WITH YOU</span></div></div>${homeVideo?`<video class="cinema-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="${media.heroPoster}" disablepictureinpicture tabindex="-1" aria-label="이성민 원장의 진료 현장 영상"><source src="${escapeHTML(homeVideo)}"></video>`:''}</div>
+<div class="cinema-content"><div class="film-eyebrow" lang="en">JJUK · CARE FOR YOUR EVERYDAY</div><h1>다시, 편안하게.<br>아픔 없이<br><em class="slogan-jjuk"><span class="visually-hidden">쭉.</span>${brandGlyph()}<span class="slogan-dot" aria-hidden="true"></span></em></h1><p class="cinema-intro">아픈 곳도, 걱정되는 마음도 편하게 이야기하세요.<br>당신의 일상을 함께 생각하는 쭉한의원입니다.</p><div class="cinema-actions">${button('나에게 맞는 진료','pain')}<button class="film-open" type="button" data-film-open>${icon(homeVideo?'play':'plus',14)}${homeVideo?'영상 크게 보기':'쭉한의원 만나보기'}</button></div></div>
 <div class="film-bottom"><span lang="en">WITH YOU, ALWAYS</span><span class="film-rule" aria-hidden="true"></span><button class="film-pause" type="button" data-motion-toggle aria-label="움직임 일시정지">Ⅱ</button></div>
 </section><section class="brand-promise" aria-label="쭉한의원의 약속"><p class="promise-en" lang="en">OUR PROMISE TO YOU</p><h2>진심 어린 건강 관리, <span class="promise-emblem" role="img" aria-label="쭉">${brandGlyph()}</span></h2><p class="promise-sub">‘쭉’ 건강을 책임지겠습니다.</p></section>
 <section class="pad"><div class="homeheading"><div><div class="kicker" lang="en">Care guide</div><h2>어떤 점이 불편하신가요?</h2></div><a class="plainlink" href="#first">처음 오시는 분 ${icon('chev',14)}</a></div><div class="homecards">${Object.entries(departments).map(([key,d])=>`<a class="dept-card" href="#${key}"><span class="dept-tag">${d.name}</span>${art(d.icon)}<strong>${d.home}</strong><span class="small">${d.desc}</span><span class="circle-arrow">${icon('arrow',16)}</span></a>`).join('')}</div></section>
@@ -154,7 +155,8 @@ function doctor(){
  '해외 의료 연수단 교육 · ACCME 인증 관리 · 병원 투어 · 의료진 교육 자료 제작',
  '전라남도 공중보건한의사 대표',
  '네이버 지식iN 상담한의사',
- '무주 세계 태권도 그랑프리 한의 진료실 의무위원'
+ '무주 세계 태권도 그랑프리 한의 진료실 의무위원',
+ '한의 일차의료 가이드라인 교과서 집필진 — 불면증 · 암 관련 증상'
  ]);
  const certifications=cvList([
  '미국 근골격계초음파 (RMSK) 인증',
@@ -261,10 +263,10 @@ function renderRoute(focus=true){
  initHomeMotion();initDoctorFilm();
 }
 
-// Supply the uploaded MP4/WebM URL in clinic.video when it becomes available.
-// Until then an animated brand scene is shown; no placeholder clinic video.
+// Use the supplied clinical footage; clinic.video may override the default loop.
+// The brand scene remains available if the video cannot load.
 let userPaused=matchMedia('(prefers-reduced-motion: reduce)').matches;
-let motionObserver=null, revealObserver=null, heroInView=true;
+let motionObserver=null, revealObserver=null, heroInView=true, homeFilm=null;
 let doctorFilm=null, doctorFilmObserver=null, doctorFilmInView=false;
 let doctorFilmUserPaused=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function applyDoctorFilmMotion(){
@@ -323,10 +325,15 @@ function showBrandFallback(hero,video){
 }
 function initHomeMotion(){
  if(motionObserver)motionObserver.disconnect();if(revealObserver)revealObserver.disconnect();
+ if(homeFilm)homeFilm.pause();homeFilm=null;
  heroInView=true;const hero=document.querySelector('.cinema');
  if(!hero)return;
  const video=hero.querySelector('video');
- if(video)video.addEventListener('error',()=>showBrandFallback(hero,video),true);
+ if(video){
+  homeFilm=video;video.muted=true;video.defaultMuted=true;video.playsInline=true;
+  video.autoplay=!userPaused;
+  video.addEventListener('error',()=>showBrandFallback(hero,video),true);
+ }
  if('IntersectionObserver' in window){
   motionObserver=new IntersectionObserver(entries=>{heroInView=entries[0].isIntersecting;applyMotion();},{threshold:.05});motionObserver.observe(hero);
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
@@ -338,8 +345,8 @@ function initHomeMotion(){
 }
 function openFilm(){
  const dialog=byId('film-dialog');const hero=document.querySelector('.cinema');
- const hasVideo=Boolean(clinic.video&&hero?.classList.contains('has-video'));
- byId('film-dialog-content').innerHTML=hasVideo?`<video class="film-dialog-video" src="${escapeHTML(clinic.video)}" poster="${media.main}" playsinline controls aria-label="쭉한의원 소개 영상"></video><h2 id="film-dialog-title" class="film-video-caption">다시, 편안하게. 아픔 없이.</h2>`:`<div class="clinic-dialog"><div class="clinic-dialog-mark brand-emblem" aria-hidden="true">${brandGlyph()}</div><div class="kicker" lang="en">HELLO, WE ARE JJUK</div><h2 id="film-dialog-title">진심 어린 건강 관리,<br>쭉.</h2><p>아픈 곳도, 걱정되는 마음도 편하게 이야기하세요.<br>충분히 듣고, 세심하게 살피고, 알기 쉽게 설명하겠습니다.</p><div class="dialog-principles"><span>진심 어린 건강 관리</span><span>전문적인 실력</span><span>끊임없는 발전</span></div><a class="btn" href="#first">첫 방문 안내 ${icon('arrow',16)}</a></div>`;
+ const hasVideo=Boolean(homeVideo&&hero?.classList.contains('has-video'));
+ byId('film-dialog-content').innerHTML=hasVideo?`<video class="film-dialog-video" src="${escapeHTML(homeVideo)}" poster="${media.heroPoster}" muted playsinline controls aria-label="쭉한의원 소개 영상"></video><h2 id="film-dialog-title" class="film-video-caption">다시, 편안하게. 아픔 없이.</h2>`:`<div class="clinic-dialog"><div class="clinic-dialog-mark brand-emblem" aria-hidden="true">${brandGlyph()}</div><div class="kicker" lang="en">HELLO, WE ARE JJUK</div><h2 id="film-dialog-title">진심 어린 건강 관리,<br>쭉.</h2><p>아픈 곳도, 걱정되는 마음도 편하게 이야기하세요.<br>충분히 듣고, 세심하게 살피고, 알기 쉽게 설명하겠습니다.</p><div class="dialog-principles"><span>진심 어린 건강 관리</span><span>전문적인 실력</span><span>끊임없는 발전</span></div><a class="btn" href="#first">첫 방문 안내 ${icon('arrow',16)}</a></div>`;
  dialog.showModal();applyMotion();
  if(hasVideo)dialog.querySelector('video').play().catch(()=>{});
 }
