@@ -1,0 +1,11 @@
+import {cp,mkdir,rm,writeFile} from 'node:fs/promises';
+const root=new URL('../',import.meta.url);
+const dist=new URL('dist/',root);
+await rm(dist,{recursive:true,force:true});
+await mkdir(dist,{recursive:true});
+for(const item of ['index.html','assets','src']) await cp(new URL(item,root),new URL(item,dist),{recursive:true});
+await mkdir(new URL('docs/',dist),{recursive:true});
+await cp(new URL('docs/colors.html',root),new URL('docs/colors.html',dist));
+await cp(new URL('docs/brand.html',root),new URL('docs/brand.html',dist));
+await writeFile(new URL('.nojekyll',dist),'');
+console.log('Built dist/ — ready for GitHub Pages');

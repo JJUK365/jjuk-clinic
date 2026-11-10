@@ -1,0 +1,15 @@
+{
+  "name": "jjuk-clinic",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "쭉한의원 홈페이지 — GitHub Pages",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "preview:file": "node scripts/export-preview.mjs",
+    "test": "node --test",
+    "check": "node --check src/app.js && node --check src/clinic-config.js && node --check src/media.js && node --check scripts/dev.mjs && node --check scripts/build.mjs && node --check scripts/export-preview.mjs"
+  }
+}

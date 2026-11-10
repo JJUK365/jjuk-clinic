@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {koreaNow,dateParts,availableHours,firstBookDate} from '../src/scheduling.js';
+const clinic={weekday:[10,11,12,14,15,16,17,18,19],saturday:[9,10,11,12],booking:{closedDates:['2026-11-16']}};
+test('Korean date rolls over at 15:00 UTC',()=>{assert.deepEqual(koreaNow(new Date('2026-11-10T15:05:00Z')),{date:'2026-11-11',minutes:5});});
+test('Invalid calendar dates cannot make slots',()=>{assert.equal(dateParts('2026-02-30'),null);assert.equal(dateParts('2026-2-3'),null);assert.equal(dateParts('2028-02-29').toISOString().slice(0,10),'2028-02-29');});
+test('Today omits elapsed and exactly current starts',()=>{assert.deepEqual(availableHours('2026-11-10',clinic,{date:'2026-11-10',minutes:14*60}),[15,16,17,18,19]);});
+test('Past, Sunday and declared closure have no slots',()=>{const now={date:'2026-11-10',minutes:600};for(const date of ['2026-11-09','2026-11-15','2026-11-16'])assert.deepEqual(availableHours(date,clinic,now),[]);});
+test('Saturday uses shorter hours and next book date skips closure',()=>{assert.deepEqual(availableHours('2026-11-14',clinic,{date:'2026-11-10',minutes:600}),[9,10,11,12]);assert.equal(firstBookDate(clinic,{date:'2026-11-14',minutes:721}),'2026-11-17');});
+test('Fully closed schedule returns no booking date',()=>{assert.equal(firstBookDate({...clinic,weekday:[],saturday:[]},{date:'2026-11-10',minutes:600}),'');});

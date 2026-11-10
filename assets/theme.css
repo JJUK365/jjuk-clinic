@@ -1,0 +1,42 @@
+/* Shared brand tokens. Keep body text dark; use the accent for emphasis. */
+:root,[data-theme="lime"]{--accent:#c3e85a;--navy:#243d2b;--navy-d:#182d20;--ink:#25352a;--grey:#657160;--frame:#f7f8ef;--cream:#f7f8ef;--soft:#edf1e3;--line:#dbe2d1;--mint:#d9e6bb;--glow:#586f39;--tint:#e8eddd}
+[data-theme="orange"]{--accent:#ffad70;--navy:#4d3025;--navy-d:#36231c;--ink:#3e3029;--grey:#78685d;--frame:#fff8f2;--cream:#fff8f2;--soft:#f8eade;--line:#e9d9ce;--mint:#f1d0b5;--glow:#8c573b;--tint:#f5e7db}
+[data-theme="sky"]{--accent:#8fd5f1;--navy:#173c50;--navy-d:#102b39;--ink:#263b45;--grey:#5e7480;--frame:#f4fafc;--cream:#f4fafc;--soft:#e8f1f5;--line:#d7e4ea;--mint:#c4e0eb;--glow:#3d7187;--tint:#e3eef3}
+.cinema,.cinema-visual{background:var(--navy)}
+.brand-scene{background:radial-gradient(ellipse at 85% 20%,var(--glow),transparent 62%),linear-gradient(120deg,var(--navy-d),var(--navy))}
+.cinema:after{background:linear-gradient(90deg,color-mix(in srgb,var(--navy-d) 40%,transparent),transparent 72%)}
+.brand-character{color:var(--accent)}.brand-scene-name{color:var(--cream)}.brand-scene-caption{color:var(--mint)}
+.jjuk-mark{background:var(--accent);color:var(--navy)}
+.cinema h1{font-size:clamp(38px,3.5vw,51px);font-weight:400;line-height:1.25;margin-bottom:20px}
+.cinema h1 .slogan-jjuk{display:inline-block;color:var(--accent);font-size:clamp(82px,8vw,112px);font-weight:900;letter-spacing:-.09em;line-height:1.05;margin-top:7px}
+.cinema-content{padding-top:50px;padding-bottom:90px}.film-eyebrow{margin-bottom:20px;color:var(--mint)}.film-eyebrow:before{background:var(--accent)}
+.cinema-intro{font-size:14px;color:var(--cream);margin-bottom:25px}
+.cinema-actions .btn{background:var(--accent);border-color:var(--accent);color:var(--navy-d)}.cinema-actions .btn:hover{background:var(--cream);border-color:var(--cream)}
+.brand-promise{background:var(--cream);border-color:var(--line)}.promise-sub{color:var(--grey)}
+.brand-promise h2 span{color:var(--navy);background:var(--accent);border-radius:50%;padding:0 14px 5px}
+.clinic-values,.footer,.profile{background:var(--tint)}.clinic-values p,.story p,.profile-copy p{color:var(--grey)}
+.values-grid{border-color:var(--grey)}.values-grid article{border-color:var(--line)}.value-number{color:var(--navy)}
+.homecards{border-color:var(--line)}.dept-card:hover{background:var(--soft)}.circle-arrow{border-color:var(--grey)}
+.film-dialog,.film-dialog-close{background:var(--cream)}.film-dialog-video{background:var(--navy-d)}
+.clinic-dialog-mark{background:var(--accent);color:var(--navy)}.clinic-dialog p{color:var(--grey)}
+.cv-group,.cv-group-body,.cv-group summary,.cv-list li{border-color:var(--line)}
+.slot input:checked+span,.pill-choice input:checked+span{background:var(--accent);color:var(--navy-d)}
+@media(max-width:900px){.cinema h1{font-size:44px}.cinema h1 .slogan-jjuk{font-size:96px}.cinema-content{padding-top:50px}}
+@media(max-width:600px){.cinema{height:650px;min-height:650px}.cinema-content{padding:34px 26px 88px;justify-content:flex-end}.cinema h1{font-size:36px}.cinema h1 .slogan-jjuk{font-size:88px}.cinema-intro{font-size:13px}.brand-character{color:var(--accent)}.brand-sign{opacity:.2}.film-eyebrow{margin-bottom:19px}.brand-promise h2{font-size:28px}}
+@media(max-width:360px){.cinema-content{padding-inline:22px}.cinema h1{font-size:32px}.cinema h1 .slogan-jjuk{font-size:78px}.cinema-actions .btn{padding-inline:12px}.film-open{padding-inline:10px}.brand-promise h2{font-size:24px}}
+
+/* Approved rounded wordmark: the same artwork in every brand placement. */
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.wordmark-shape,.brand-glyph{display:block;flex:none;background:currentColor;-webkit-mask-image:url('./brand/jjuk-wordmark.png');mask-image:url('./brand/jjuk-wordmark.png');-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.wordmark-shape{width:166px;aspect-ratio:1660/410;-webkit-mask-size:130.8434% 176.5854%;mask-size:130.8434% 176.5854%;-webkit-mask-position:50.7813% 52.5478%;mask-position:50.7813% 52.5478%}
+.brand-glyph{width:1em;aspect-ratio:432/412;-webkit-mask-size:502.7778% 175.7282%;mask-size:502.7778% 175.7282%;-webkit-mask-position:14.8276% 52.8846%;mask-position:14.8276% 52.8846%}
+.logo-final{display:flex;flex-direction:column;align-items:flex-start;gap:7px;color:var(--navy)}.brand-caption{font-size:8px;letter-spacing:.23em;font-weight:600;line-height:1;padding-left:2px}
+.brand-emblem{width:270px;height:270px;background:var(--accent);border-radius:23%;display:grid;place-items:center;color:var(--navy);font-size:192px;padding-top:5px}
+.brand-scene-wordmark{color:var(--accent);margin:28px 0 17px}.brand-scene-wordmark .wordmark-shape{width:300px}
+.brand-sign{right:10%}.brand-scene-caption{font-size:9px;letter-spacing:.2em}
+.cinema h1 .slogan-jjuk{display:inline-flex;align-items:flex-end;gap:.04em;margin-top:.12em;line-height:1;vertical-align:top}.slogan-jjuk .brand-glyph{width:.83em}.slogan-dot{width:.13em;height:.13em;border-radius:50%;background:currentColor;margin-bottom:.05em}
+.clinic-dialog-mark.brand-emblem{width:92px;height:92px;font-size:65px;border-radius:23%;padding-top:2px}.footer-brand .wordmark-shape{width:145px}
+@media(max-width:1100px){.brand-sign{right:7%}.brand-emblem{width:230px;height:230px;font-size:164px}.brand-scene-wordmark .wordmark-shape{width:255px}}
+@media(max-width:900px){.logo-final .wordmark-shape{width:150px}.top .logo-final{gap:6px}.brand-sign{right:6%}.brand-emblem{width:215px;height:215px;font-size:152px}.brand-scene-wordmark .wordmark-shape{width:240px}}
+@media(max-width:600px){.logo-final .wordmark-shape{width:136px}.brand-caption{font-size:7px}.brand-sign{opacity:.12;right:25px;top:105px;transform:none}.brand-emblem{width:150px;height:150px;font-size:108px}.brand-scene-wordmark,.brand-sign>.brand-scene-caption{display:none}.cinema h1 .slogan-jjuk{font-size:100px}.cinema-content{z-index:1}}
+@media(max-width:360px){.logo-final .wordmark-shape{width:112px}.brand-caption{font-size:6px}.top{gap:5px}.cinema h1 .slogan-jjuk{font-size:88px}.top .btn{padding-inline:10px}}
