@@ -181,7 +181,7 @@ function doctor(){
  ];
  return topBanner('People at JJUK','의료진 이야기','환자의 이야기를 듣고, 더 나은 일상을 함께 생각합니다.')+crumb('','의료진')+
  section('01','이성민 원장',`<div class="story doctor-story"><img src="${media.main}" alt="이성민 원장 메인 프로필"><div><div class="kicker">LEE SEONG MIN · K.M.D.</div><h2>편안하게 이야기하고,<br>충분히 이해할 수 있도록.</h2><p>어디가 아픈지, 어떤 순간이 불편한지, 다시 하고 싶은 일은 무엇인지 묻겠습니다. 진료 과정과 치료 방향을 알기 쉽게 설명하며 함께 살피겠습니다.</p><h3 class="credentials-heading">주요 약력</h3>${credentials}</div></div>`)+
- section('02','진료와 배움의 현장',`<div class="doctor-film-intro"><div><div class="kicker" lang="en">LEARNING & CARING</div><h2>배움을 이어가고,<br>현장에서 함께합니다.</h2></div><p>미시간주립대학교 연수부터<br>무주 태권도 진료 현장까지.</p></div><figure class="doctor-film"><video src="${media.story}" poster="${media.storyPoster}" controls muted playsinline loop preload="metadata" aria-label="쭉한의원 이성민 원장의 연수와 진료 현장 영상" aria-describedby="doctor-film-caption"><a href="${media.story}">진료 현장 영상 보기</a></video><figcaption id="doctor-film-caption"><span>연수 사진과 실제 진료 장면을 담았습니다.</span><span>34초 · 무음 · 선수 얼굴 모자이크</span></figcaption></figure>`)+
+ section('02','진료와 배움의 현장',`<div class="doctor-film-intro"><div><div class="kicker" lang="en">LEARNING & CARING</div><h2>배움을 이어가고,<br>현장에서 함께합니다.</h2></div><p>미시간주립대학교 연수부터<br>무주 태권도 진료 현장까지.</p></div><figure class="doctor-film"><video id="doctor-story-film" src="${media.story}" poster="${media.storyPoster}" autoplay muted playsinline webkit-playsinline loop preload="metadata" disablepictureinpicture tabindex="-1" aria-label="쭉한의원 이성민 원장의 연수와 진료 현장 영상" aria-describedby="doctor-film-caption"><a href="${media.story}">진료 현장 영상 보기</a></video><figcaption id="doctor-film-caption"><span>연수와 진료 현장의 기록</span><button type="button" class="film-motion-toggle" data-doctor-motion-toggle aria-controls="doctor-story-film">움직임 멈춤</button></figcaption></figure>`)+
  section('03','학력·경력·자격',`<div class="cv-groups">${cvGroup('학력','경희대학교 · 동국대학교',education,true)}${cvGroup('진료·교육·대외활동','임상 진료와 의료 교육, 지역사회 활동',experience,true)}${cvGroup('자격 및 연수','근골격계 초음파 · 교정운동 · 스포츠의학 · 추나',certifications,true)}${cvGroup('학회 활동','학회 회원 및 위원 활동',societies)}</div>`)+
  section('04','수상 및 연구 이력',`<div class="award-grid"><article class="award-feature"><span class="award-year">AWARD</span><h3>보건복지부장관 표창</h3><p>일차의료건강증진사업</p></article><article class="award-secondary"><span class="award-year">AWARD</span><h3>KIOM 글로벌 원정대 대상</h3><p>한국한의학연구원 글로벌 원정대<br>팀장 역임 및 대상 수상</p></article></div><div class="research-heading"><h3>주요 연구 및 학술활동</h3><p>SCI(E) 논문 3편 · KCI 논문 5편 게재<br>ISPOR ASIA Tokyo 학회 포스터 제1저자 발표</p></div><div class="paper-list">${papers.map((paper,i)=>`<article class="paper-card"><span class="paper-number">0${i+1}</span><div><p class="paper-journal">${paper[2]}</p><h4>${paper[0]}</h4><p class="paper-title" lang="en">${paper[1]}</p><a href="${paper[3]}" target="_blank" rel="noopener noreferrer" class="plainlink">논문 정보 보기 ${icon('north',13)}<span class="sr-only">(새 창)</span></a></div></article>`).join('')}</div>`)+
  section('05','배움을 진료로 이어갑니다',`<div class="field doctor-training"><div><div class="kicker" lang="en">CONTINUING EDUCATION</div><h2>움직임을 이해하는 배움</h2><p>미국 미시간주립대학교 정골의과대학(MSUCOM)의 고급 정골의학 연수를 이수했습니다. 척추와 골반의 움직임을 평가하는 수기치료 과정을 통해 진료에 필요한 관점을 넓혔습니다.</p></div><figure><img src="${media.training}" loading="lazy" alt="미시간주립대학교 정골의학 연수 수료증을 들고 촬영한 이성민 원장"><figcaption>미시간주립대학교 정골의과대학(MSUCOM) 연수 수료</figcaption></figure></div>`)+
@@ -258,13 +258,47 @@ function renderRoute(focus=true){
  const dialog=byId('dialog');if(dialog.open)dialog.close();setMenu(false);const app=byId('app');app.innerHTML=html;document.title=title+' | '+clinic.brand;
  document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===(axis||id))a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  linkBooking(axis);bindForm();if(focus){app.focus({preventScroll:true});window.scrollTo(0,0);}
- initHomeMotion();
+ initHomeMotion();initDoctorFilm();
 }
 
 // Supply the uploaded MP4/WebM URL in clinic.video when it becomes available.
 // Until then an animated brand scene is shown; no placeholder clinic video.
 let userPaused=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let motionObserver=null, revealObserver=null, heroInView=true;
+let doctorFilm=null, doctorFilmObserver=null, doctorFilmInView=false;
+let doctorFilmUserPaused=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function applyDoctorFilmMotion(){
+ const video=doctorFilm;if(!video?.isConnected)return;
+ const button=document.querySelector('[data-doctor-motion-toggle]');
+ if(button){button.textContent=doctorFilmUserPaused?'움직임 재생':'움직임 멈춤';button.setAttribute('aria-label',doctorFilmUserPaused?'진료 현장 영상 재생':'진료 현장 영상 일시정지');}
+ if(doctorFilmUserPaused||!doctorFilmInView||document.hidden){video.pause();return;}
+ if(video.paused)video.play().catch(error=>{
+  if(error.name==='AbortError'||video!==doctorFilm||!video.isConnected)return;
+  // Keep the poster and a quiet text control if the browser blocks autoplay.
+  doctorFilmUserPaused=true;applyDoctorFilmMotion();
+ });
+}
+function initDoctorFilm(){
+ if(doctorFilmObserver)doctorFilmObserver.disconnect();
+ if(doctorFilm)doctorFilm.pause();
+ doctorFilm=byId('doctor-story-film');doctorFilmInView=false;
+ if(!doctorFilm)return;
+ doctorFilm.muted=true;doctorFilm.defaultMuted=true;doctorFilm.playsInline=true;
+ if(doctorFilmUserPaused)doctorFilm.autoplay=false;
+ const rect=doctorFilm.getBoundingClientRect();
+ doctorFilmInView=rect.bottom>0&&rect.top<window.innerHeight;
+ if('IntersectionObserver' in window){
+  doctorFilmObserver=new IntersectionObserver(entries=>{
+   const entry=entries[0];doctorFilmInView=entry.isIntersecting&&entry.intersectionRatio>=.15;
+   applyDoctorFilmMotion();
+  },{threshold:[0,.15]});
+  doctorFilmObserver.observe(doctorFilm);
+ }
+ document.querySelector('[data-doctor-motion-toggle]').addEventListener('click',()=>{
+  doctorFilmUserPaused=!doctorFilmUserPaused;applyDoctorFilmMotion();
+ });
+ applyDoctorFilmMotion();
+}
 function applyMotion(){
  const hero=document.querySelector('.cinema'); if(!hero)return;
  const paused=userPaused||!heroInView||document.hidden||byId('film-dialog').open;
@@ -312,7 +346,8 @@ function openFilm(){
 byId('film-dialog').addEventListener('close',()=>{const v=byId('film-dialog').querySelector('video');if(v)v.pause();applyMotion();});
 byId('film-dialog').addEventListener('click',e=>{if(e.target===byId('film-dialog')){const rect=e.target.getBoundingClientRect();if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom)e.target.close();}});
 document.addEventListener('visibilitychange',applyMotion);
-matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',e=>{userPaused=e.matches;document.querySelectorAll('.reveal-pending').forEach(el=>el.classList.add('is-visible'));applyMotion();});
+document.addEventListener('visibilitychange',applyDoctorFilmMotion);
+matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',e=>{userPaused=e.matches;doctorFilmUserPaused=e.matches;document.querySelectorAll('.reveal-pending').forEach(el=>el.classList.add('is-visible'));applyMotion();applyDoctorFilmMotion();});
 document.addEventListener('click',e=>{
  if(e.target.closest('[data-motion-toggle]')){userPaused=!userPaused;applyMotion();}
  if(e.target.closest('[data-film-open]'))openFilm();

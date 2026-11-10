@@ -85,3 +85,23 @@ body{background:var(--frame)}.shell{max-width:none;margin:0;border:0;border-radi
 /* Clinical montage: preserve the full picture at every viewport size. */
 .doctor-film-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:28px}.doctor-film-intro h2{font-size:32px;font-weight:600;line-height:1.5;letter-spacing:-.04em;margin:10px 0 0}.doctor-film-intro>p{font-size:14px;line-height:1.9;color:var(--grey)}.doctor-film{margin:0}.doctor-film video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#173c33;border-radius:4px}.doctor-film figcaption{display:flex;justify-content:space-between;gap:14px;margin-top:14px;font-size:12px;line-height:1.8;color:var(--grey)}
 @media(max-width:600px){.doctor-film-intro{display:block;margin-bottom:22px}.doctor-film-intro h2{font-size:26px}.doctor-film-intro>p{margin-top:16px;font-size:13px}.doctor-film figcaption{flex-direction:column;gap:3px;font-size:11px}}
+
+/* A quiet, continuous film with no native playback chrome. */
+.doctor-film video::-webkit-media-controls{display:none!important}
+.doctor-film video::-webkit-media-controls-start-playback-button{display:none!important}
+.doctor-film figcaption{align-items:center;flex-direction:row;margin-top:8px;gap:12px}
+.film-motion-toggle{flex:none;appearance:none;border:0;background:transparent;color:var(--grey);font:inherit;font-size:11px;line-height:1.5;padding:7px 0 7px 12px;cursor:pointer;text-underline-offset:4px}
+.film-motion-toggle:hover{text-decoration:underline;color:var(--ink)}
+.film-motion-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+
+/* Compact credentials: keep readable type while removing space between rows. */
+.primary-credentials li{padding:4px 0;line-height:1.45}
+.credentials-heading{margin:20px 0 8px}
+.cv-group summary{padding:14px 6px;gap:14px}
+.cv-group summary strong{font-size:20px}
+.cv-group summary small{margin-top:2px;line-height:1.4}
+.cv-group-body{padding:0 6px 14px}
+.cv-list{gap:0 30px;align-items:start}
+.cv-list li{padding:3px 0 3px 12px;font-size:14px;line-height:1.5}
+.cv-list li:before{top:12px}
+@media(max-width:600px){.primary-credentials li{padding:4px 0;line-height:1.45}.cv-group summary{padding:12px 0}.cv-group summary strong{font-size:18px}.cv-group summary small{font-size:11px;line-height:1.4}.cv-group-body{padding:0 0 12px}.cv-list{gap:0}.cv-list li{font-size:13px;line-height:1.45;padding-block:3px}.cv-list li:before{top:11px}.doctor-film figcaption{font-size:11px}}
