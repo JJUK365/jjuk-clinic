@@ -141,31 +141,31 @@ section('01','증상 이야기',`<div class="s1"><div><div class="persona">문�
 section('02','이런 신호가 있다면',`<div class="sig">${signals.split('|').map(s=>`<div class="c">${icon('check',17)}<span>${s}</span></div>`).join('')}</div>${urgent?`<aside class="urgent"><strong>${id==='menopause'?'먼저 확인하세요':'예약보다 응급 평가가 먼저인 경우'}</strong>${urgent}</aside>`:''}`)+section('03','진료는 이렇게 진행해요',steps(careSteps[key]))+section('04','자주 묻는 질문',faq(faqsFor(key)))+band(key);}
 function doctor(){
  const education=cvList([
- '경희대학교 한의과대학원 본초학교실 박사과정 재학 <span class="cv-date">2025.03–</span>',
- '경희대학교 한의과대학원 본초학교실 석사 졸업 <span class="cv-date">2022.03–2024.02</span>',
- '동국대학교 한의과대학 졸업 <span class="cv-date">2014.03–2020.02</span>'
+ '경희대학교 한의과대학원 본초학교실 박사과정 재학',
+ '경희대학교 한의과대학원 본초학교실 석사 졸업',
+ '동국대학교 한의과대학 졸업'
  ]);
  const experience=cvList([
- '장성공립노인전문요양병원 한방과장 <span class="cv-date">2025.03–</span>',
+ '장성공립노인전문요양병원 한방과장',
  '강남자생한방병원 진료원장 · TA센터 진료원장',
  '강남자생한방병원 외래 대진 · 병동 주치의',
  '강남자생한방병원 국제진료센터 외국인 진료 · 몽골 해외출장진료',
  '자생 메디컬 아카데미 원장 · Project Manager',
  '해외 의료 연수단 교육 · ACCME 인증 관리 · 병원 투어 · 의료진 교육 자료 제작',
- '전라남도 공중보건한의사 대표 <span class="cv-date">2025.04–2026.03</span>',
- '네이버 지식iN 상담한의사 <span class="cv-date">2023.04–</span>',
+ '전라남도 공중보건한의사 대표',
+ '네이버 지식iN 상담한의사',
  '무주 세계 태권도 그랑프리 한의 진료실 의무위원'
  ]);
  const certifications=cvList([
- '미국 근골격계초음파 (RMSK) 인증 <span class="cv-date">2023</span>',
- '미국 교정운동전문가 NASM-CES <span class="cv-date">2023</span>',
- 'NSCA 상급 스포츠영양학 코치 <span class="cv-date">2025</span>',
- 'FIFA Diploma in Football Medicine <span class="cv-date">2024</span>',
- '대한스포츠한의학회 공인 팀닥터 프로그램 수료 <span class="cv-date">2025</span>',
- '척추신경추나의학회 정규과정 수료 <span class="cv-date">2022</span>',
- '한방비만치료 전문가 과정 수료 <span class="cv-date">2024</span>',
- '미국 미시간주립대학교 정골의과대학(MSUCOM) 고급 정골의학 연수 완료 <span class="cv-date">2026</span>',
- '베트남 의사 예비면허 취득 <span class="cv-date">2025</span>'
+ '미국 근골격계초음파 (RMSK) 인증',
+ '미국 교정운동전문가 NASM-CES',
+ 'NSCA 상급 스포츠영양학 코치',
+ 'FIFA Diploma in Football Medicine',
+ '대한스포츠한의학회 공인 팀닥터 프로그램 수료',
+ '척추신경추나의학회 정규과정 수료',
+ '한방비만치료 전문가 과정 수료',
+ '미국 미시간주립대학교 정골의과대학(MSUCOM) 고급 정골의학 연수 완료',
+ '베트남 의사 예비면허 취득'
  ]);
  const societies=cvList([
  '대한스포츠한의학회 예비기획위원 활동',
@@ -175,15 +175,16 @@ function doctor(){
  '대한한의약해외의료봉사단(KOMSTA) 정회원'
  ]);
  const papers=[
- ['만성 경항통 환자의 건강 관련 삶의 질 평가','Comparison of preference-based health-related quality of life measures for chronic neck pain: a pooled analysis of data from three RCTs','BMJ Open · 2024;14(12):e086104','https://pubmed.ncbi.nlm.nih.gov/39725423/'],
- ['포공영의 전립선비대증 동물모델 연구','Effects of Taraxaci Herba (Dandelion) on Testosterone Propionate-Induced Benign Prostatic Hyperplasia in Rats','Nutrients · 2024;16(8):1189','https://pubmed.ncbi.nlm.nih.gov/38674879/'],
- ['암 환자 보완치료에 관한 체계적 문헌고찰 개요','An Overview of Systematic Reviews: Complementary Therapies for Cancer Patients','Integrative Cancer Therapies · 2019;18:1534735419890029','https://pubmed.ncbi.nlm.nih.gov/31876212/']
+ ['만성 경항통 환자의 건강 관련 삶의 질 평가','Comparison of preference-based health-related quality of life measures for chronic neck pain: a pooled analysis of data from three RCTs','BMJ Open','https://pubmed.ncbi.nlm.nih.gov/39725423/'],
+ ['포공영의 전립선비대증 동물모델 연구','Effects of Taraxaci Herba (Dandelion) on Testosterone Propionate-Induced Benign Prostatic Hyperplasia in Rats','Nutrients','https://pubmed.ncbi.nlm.nih.gov/38674879/'],
+ ['암 환자 보완치료에 관한 체계적 문헌고찰 개요','An Overview of Systematic Reviews: Complementary Therapies for Cancer Patients','Integrative Cancer Therapies','https://pubmed.ncbi.nlm.nih.gov/31876212/']
  ];
  return topBanner('People at JJUK','의료진 이야기','환자의 이야기를 듣고, 더 나은 일상을 함께 생각합니다.')+crumb('','의료진')+
  section('01','이성민 원장',`<div class="story doctor-story"><img src="${media.main}" alt="이성민 원장 메인 프로필"><div><div class="kicker">LEE SEONG MIN · K.M.D.</div><h2>편안하게 이야기하고,<br>충분히 이해할 수 있도록.</h2><p>어디가 아픈지, 어떤 순간이 불편한지, 다시 하고 싶은 일은 무엇인지 묻겠습니다. 진료 과정과 치료 방향을 알기 쉽게 설명하며 함께 살피겠습니다.</p><h3 class="credentials-heading">주요 약력</h3>${credentials}</div></div>`)+
  section('02','학력·경력·자격',`<div class="cv-groups">${cvGroup('학력','경희대학교 · 동국대학교',education,true)}${cvGroup('진료·교육·대외활동','임상 진료와 의료 교육, 지역사회 활동',experience,true)}${cvGroup('자격 및 연수','근골격계 초음파 · 교정운동 · 스포츠의학 · 추나',certifications,true)}${cvGroup('학회 활동','학회 회원 및 위원 활동',societies)}</div>`)+
- section('03','수상 및 연구 이력',`<div class="award-grid"><article class="award-feature"><span class="award-year">2025 · AWARD</span><h3>보건복지부장관 표창</h3><p>일차의료건강증진사업</p></article><article class="award-secondary"><span class="award-year">2018 · AWARD</span><h3>KIOM 글로벌 원정대 대상</h3><p>한국한의학연구원 글로벌 원정대<br>팀장 역임 및 대상 수상</p></article></div><div class="research-heading"><h3>주요 연구 및 학술활동</h3><p>SCI(E) 논문 3편 · KCI 논문 5편 게재<br>ISPOR ASIA Tokyo 학회 포스터 제1저자 발표</p></div><div class="paper-list">${papers.map((paper,i)=>`<article class="paper-card"><span class="paper-number">0${i+1}</span><div><p class="paper-journal">${paper[2]}</p><h4>${paper[0]}</h4><p class="paper-title" lang="en">${paper[1]}</p><a href="${paper[3]}" target="_blank" rel="noopener noreferrer" class="plainlink">논문 정보 보기 ${icon('north',13)}<span class="sr-only">(새 창)</span></a></div></article>`).join('')}</div>`)+
- section('04','배움을 진료로 이어갑니다',`<div class="field doctor-training"><div><div class="kicker" lang="en">CONTINUING EDUCATION</div><h2>움직임을 이해하는 배움</h2><p>미국 미시간주립대학교 정골의과대학(MSUCOM)의 고급 정골의학 연수를 이수했습니다. 척추와 골반의 움직임을 평가하는 수기치료 과정을 통해 진료에 필요한 관점을 넓혔습니다.</p></div><figure><img src="${media.training}" loading="lazy" alt="미시간주립대학교 실습실에서 척추 모형 옆에 선 이성민 원장"><figcaption>미시간주립대학교 정골의과대학 실습실 · 2026년</figcaption></figure></div>`)+band(null);
+ section('03','수상 및 연구 이력',`<div class="award-grid"><article class="award-feature"><span class="award-year">AWARD</span><h3>보건복지부장관 표창</h3><p>일차의료건강증진사업</p></article><article class="award-secondary"><span class="award-year">AWARD</span><h3>KIOM 글로벌 원정대 대상</h3><p>한국한의학연구원 글로벌 원정대<br>팀장 역임 및 대상 수상</p></article></div><div class="research-heading"><h3>주요 연구 및 학술활동</h3><p>SCI(E) 논문 3편 · KCI 논문 5편 게재<br>ISPOR ASIA Tokyo 학회 포스터 제1저자 발표</p></div><div class="paper-list">${papers.map((paper,i)=>`<article class="paper-card"><span class="paper-number">0${i+1}</span><div><p class="paper-journal">${paper[2]}</p><h4>${paper[0]}</h4><p class="paper-title" lang="en">${paper[1]}</p><a href="${paper[3]}" target="_blank" rel="noopener noreferrer" class="plainlink">논문 정보 보기 ${icon('north',13)}<span class="sr-only">(새 창)</span></a></div></article>`).join('')}</div>`)+
+ section('04','배움을 진료로 이어갑니다',`<div class="field doctor-training"><div><div class="kicker" lang="en">CONTINUING EDUCATION</div><h2>움직임을 이해하는 배움</h2><p>미국 미시간주립대학교 정골의과대학(MSUCOM)의 고급 정골의학 연수를 이수했습니다. 척추와 골반의 움직임을 평가하는 수기치료 과정을 통해 진료에 필요한 관점을 넓혔습니다.</p></div><figure><img src="${media.training}" loading="lazy" alt="미시간주립대학교 정골의학 연수 수료증을 들고 촬영한 이성민 원장"><figcaption>미시간주립대학교 정골의과대학(MSUCOM) 연수 수료</figcaption></figure></div>`)+
+ section('05','현장에서 나누는 진료 경험',`<div class="field doctor-training"><div><div class="kicker" lang="en">CLINICAL EDUCATION</div><h2>설명하고, 함께 살피는 진료</h2><p>자생 메디컬 아카데미에서 해외 의료진 연수단 교육을 담당했습니다. 진료 경험을 나누고 치료 과정을 설명하며, 임상에서의 배움을 이어왔습니다.</p></div><figure><img src="${media.education}" loading="lazy" alt="해외 의료진 연수단을 대상으로 진료 과정을 설명하는 이성민 원장"><figcaption>해외 의료진 대상 임상 교육 현장</figcaption></figure></div>`)+band(null);
 }
 function infoPage(id){let title=names[id],content='';
  if(id==='first')content=section('01','첫 방문 전에 궁금한 점',faq([['한 번 방문하면 얼마나 걸리나요?',escapeHTML(clinic.visitDuration)+' 초진에는 문진과 움직임 평가가 포함됩니다.'],['몇 번 방문해야 하나요?','첫 방문에서 생활 목표를 정하고, 증상과 재평가 결과에 따라 방문 간격을 상의합니다.'],['침이나 추나가 아플까 걱정돼요.','먼저 진찰을 받고 방법을 결정할 수 있습니다. 바늘이나 특정 동작이 두렵다면 진료 전에 말씀해 주세요.'],['보험과 비용은 어떻게 확인하나요?','진료 항목에 따라 급여 여부와 본인부담금이 달라집니다. <a class="plainlink" href="#fees">비급여 비용 안내 '+icon('chev',13)+'</a>'],['차를 가져가도 되나요?',escapeHTML(clinic.parking)||'주차 여부·대수·비용은 개원 장소 확정 후 오시는 길에 안내합니다.'],['무엇을 준비할까요?','복용 중인 약 목록과 기존 검사 결과가 있다면 가져오세요. 교통사고 상담은 대인 접수번호가 있으면 함께 준비해 주세요.']]));
