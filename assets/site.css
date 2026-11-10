@@ -81,3 +81,7 @@ body{background:var(--frame)}.shell{max-width:none;margin:0;border:0;border-radi
 @media(max-width:360px){.cinema h1{font-size:33px}.cinema-intro{font-size:12px}.brand-character{font-size:158px}.brand-sign{top:25px}.brand-promise h2{font-size:27px}.values-heading h2{font-size:22px}.doctor-story>img{height:375px}.primary-credentials li{font-size:12px}}
 @keyframes brand-float-mobile{from{transform:translateY(0)}to{transform:translateY(-8px)}}
 
+
+/* Clinical montage: preserve the full picture at every viewport size. */
+.doctor-film-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:28px}.doctor-film-intro h2{font-size:32px;font-weight:600;line-height:1.5;letter-spacing:-.04em;margin:10px 0 0}.doctor-film-intro>p{font-size:14px;line-height:1.9;color:var(--grey)}.doctor-film{margin:0}.doctor-film video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#173c33;border-radius:4px}.doctor-film figcaption{display:flex;justify-content:space-between;gap:14px;margin-top:14px;font-size:12px;line-height:1.8;color:var(--grey)}
+@media(max-width:600px){.doctor-film-intro{display:block;margin-bottom:22px}.doctor-film-intro h2{font-size:26px}.doctor-film-intro>p{margin-top:16px;font-size:13px}.doctor-film figcaption{flex-direction:column;gap:3px;font-size:11px}}
