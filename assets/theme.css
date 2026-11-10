@@ -40,3 +40,11 @@
 @media(max-width:900px){.logo-final .wordmark-shape{width:150px}.top .logo-final{gap:6px}.brand-sign{right:6%}.brand-emblem{width:215px;height:215px;font-size:152px}.brand-scene-wordmark .wordmark-shape{width:240px}}
 @media(max-width:600px){.logo-final .wordmark-shape{width:136px}.brand-caption{font-size:7px}.brand-sign{opacity:.12;right:25px;top:105px;transform:none}.brand-emblem{width:150px;height:150px;font-size:108px}.brand-scene-wordmark,.brand-sign>.brand-scene-caption{display:none}.cinema h1 .slogan-jjuk{font-size:100px}.cinema-content{z-index:1}}
 @media(max-width:360px){.logo-final .wordmark-shape{width:112px}.brand-caption{font-size:6px}.top{gap:5px}.cinema h1 .slogan-jjuk{font-size:88px}.top .btn{padding-inline:10px}}
+
+/* Keep the main portrait intact; use a separate face-and-shoulders crop at home. */
+.doctor-story{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:48px}
+.doctor-story>img{width:100%;height:auto;max-height:none;object-fit:contain;border-radius:12px;align-self:start}
+.doctor-teaser-portrait{position:relative;flex:none;width:104px;aspect-ratio:1;border-radius:50%;overflow:hidden;background:#d6dfe5}
+.doctor-teaser-portrait img{position:absolute;width:166.6667%;max-width:none;height:auto;border-radius:0;left:-46.6667%;top:-11%}
+@media(max-width:900px){.doctor-story{gap:28px}.doctor-teaser-portrait{width:88px}}
+@media(max-width:600px){.doctor-story{grid-template-columns:1fr;gap:28px}.doctor-story>img{max-width:420px;margin-inline:auto}.doctor-teaser-portrait{width:84px}}
